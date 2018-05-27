@@ -1,0 +1,64 @@
+title 0.4 Uusi muistiinpano
+k‰ytt‰j‰->selain: 
+
+note left of selain
+k‰ytt‰j‰ on sivulla
+fullstack-exampleapp.herokuapp.com/notes
+Kirjoittaa uuden muistiinpanon input kentt‰‰n ja 
+painaa Talleta-nappia.
+end note
+
+
+note right of selain
+Selain l‰hett‰‰ k‰ytt‰j‰n lomakkeelle syˆtt‰m‰n tiedon
+palvelimelle form-muodossa
+end note
+selain->palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note
+
+palvelin->selain: 302 Found, Location: /notes
+note right of selain
+Palvelin vastaa koodilla 302 jonka k‰ynnist‰‰ sivun latauksen 
+Location headerin osoitteesta. Eli:
+fullstack-exampleapp.herokuapp.com/notes
+end note
+
+
+note left of selain
+T‰st‰ eteenp‰in toimitaan kuten teht‰v‰ss‰:
+0.3 muistiinpanojen haku.
+end note
+
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/notes
+note right of selain
+palvelin palauttaa HTML muotoisen dokumentin
+end note
+palvelin->selain: 200 OK, text/html
+
+note right of selain
+selain tulkitsee HTML sivun ja lataa siin‰ mainitut CSS ja
+JavaScript tiedostot palvelimelta
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: 200 OK, text/css
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: 200 OK, application/javascript
+
+note right of selain
+Selain suorittaa JavaScript tiedoston. T‰m‰ k‰ynnist‰‰ 
+muistiinpanojen haun palvelimelta.
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: 200 OK, application/json
+
+note right of selain
+JavaScript muodostaa listan palvelimelta saadusta JSON-muotoisesta 
+datasta ja injektoi sen HTML dokumenttiin.
+end note
+
+note left of selain 
+
+Selain huomioi CSS-m‰‰ritykset HTML-sivun ulkoasussa. Sivu on 
+valmis n‰ytett‰v‰ksi k‰ytt‰j‰lle. 
+end note
+

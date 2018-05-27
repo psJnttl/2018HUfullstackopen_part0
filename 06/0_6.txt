@@ -1,0 +1,29 @@
+title 0.6 Uusi muistiinpano SPA:ssa
+k‰ytt‰j‰->selain:
+note left of selain
+k‰ytt‰j‰ kirjoittaa uuden muistiinpanon lomakkeen 
+input kentt‰‰n ja painaa Talleta-nappia
+end note
+
+selain->palvelin:
+note right of selain
+Javascript est‰‰ lomakkeen l‰hetyksen perinteisesti, koostaa 
+sen JSON-muotoon jolloin siit‰ lˆytyv‰t attribuutit 
+content ja date. JSON menee POST viestin bodyss‰.
+end note
+selain->palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+palvelin->selain: 201 Created
+
+note right of selain
+T‰ss‰ esimerkiss‰ uusi muistiinpano talletetaan muistiinpanojen 
+listalle ennenkuin edes tiedet‰‰n onnistuiko tallennus palvelimella.
+Metodilla redrawNotes k‰yd‰‰n muistiinpanolista l‰pi, muodostetaan 
+siit‰ HTML-muotoinen lista ja injektoidaan se HTML dokumenttiin samalle 
+paikalle kuin vanha lista.
+end note
+
+note left of selain 
+
+Selain huomioi CSS-m‰‰ritykset HTML-sivun ulkoasussa. Sivu on 
+valmis ja n‰ytet‰‰n k‰ytt‰j‰lle. 
+end note

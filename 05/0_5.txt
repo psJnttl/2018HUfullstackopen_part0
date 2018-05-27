@@ -1,0 +1,41 @@
+title 0.5 Single page app
+
+k‰ytt‰j‰->selain:
+note left of selain
+k‰ytt‰j‰ menee selaimella osoitteeseen 
+fullstack-exampleapp.herokuapp.com/spa
+end note
+
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/spa
+note right of selain
+palvelin palauttaa HTML muotoisen dokumentin
+end note
+palvelin->selain: 200 OK, text/html
+
+note right of selain
+selain tulkitsee HTML sivun ja lataa sen headeriss‰ mainitut 
+CSS ja JavaScript tiedostot palvelimelta
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: 200 OK, text/css
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/spa.js
+palvelin->selain: 200 OK, application/javascript
+
+note right of selain
+Selain suorittaa JavaScript tiedoston. T‰m‰ puolestaan k‰ynnist‰‰ 
+muistiinpanojen haun palvelimelta.
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: 200 OK, application/json
+
+note right of selain
+JavaScript muodostaa listan palvelimelta saadusta JSON-muotoisesta 
+datasta ja injektoi sen HTML dokumenttiin.
+end note
+
+note left of selain 
+
+Selain huomioi CSS-m‰‰ritykset HTML-sivun ulkoasussa. Sivu on 
+valmis ja n‰ytet‰‰n k‰ytt‰j‰lle. 
+end note
+
